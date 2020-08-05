@@ -4,6 +4,7 @@
 
 # Conventional directory for build outputs
 build/
+json/
 
 # Directory created by dartdoc
 doc/api/
