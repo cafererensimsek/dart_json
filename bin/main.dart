@@ -9,6 +9,5 @@ void main() async {
   Map<String, List<Transaction>> internals =
       filterInternals(results[0], results[1]);
 
-  sleep(const Duration(minutes: 1));
   print(internals);
 }
