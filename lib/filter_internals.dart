@@ -1,21 +1,19 @@
 import 'transaction.dart';
 
-Map<String, List<Transaction>> filterInternals(
-    List<Transaction> positiveTransactions,
+List<List<Transaction>> filterInternals(List<Transaction> positiveTransactions,
     List<Transaction> negativeTransactions) {
-  Map<String, List<Transaction>> internalTransaction = {};
+  List<List<Transaction>> internalTransaction = [];
   var i = 1;
 
   positiveTransactions.forEach((positiveTransaction) {
     negativeTransactions.forEach((negativeTransaction) {
       if (positiveTransaction.amount == positiveTransaction.amount &&
-          positiveTransaction.date == negativeTransaction.date) {
-        internalTransaction[i.toString()] = [
-          positiveTransaction,
-          negativeTransaction
-        ];
-        positiveTransaction.amount = 0;
-        negativeTransaction.amount = 0;
+          positiveTransaction.date == negativeTransaction.date &&
+          positiveTransaction.isMatched == false &&
+          negativeTransaction.isMatched == false) {
+        internalTransaction.add([positiveTransaction, negativeTransaction]);
+        positiveTransaction.isMatched = true;
+        negativeTransaction.isMatched = true;
         i++;
       }
     });

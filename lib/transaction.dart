@@ -4,9 +4,15 @@ class Transaction {
   num amount;
   String date;
   String description;
+  bool isMatched;
 
   Transaction(
-      {this.id, this.category, this.amount, this.date, this.description});
+      {this.id,
+      this.category,
+      this.amount,
+      this.date,
+      this.description,
+      this.isMatched});
 
   factory Transaction.fromJson(Map<String, dynamic> json) {
     return Transaction(
@@ -15,6 +21,7 @@ class Transaction {
       amount: json['amount'] as num,
       date: json['made_on'] as String,
       description: json['description'] as String,
+      isMatched: false,
     );
   }
 }
