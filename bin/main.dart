@@ -1,6 +1,6 @@
-import 'package:cash_coach/filter_internals.dart';
-import 'package:cash_coach/get_transfers.dart';
-import 'package:cash_coach/transaction.dart';
+import '../lib/filter_internals.dart';
+import '../lib/get_transfers.dart';
+import '../lib/transaction.dart';
 
 void main() async {
   List<List<Transaction>> results = await getTransfers();

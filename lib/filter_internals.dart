@@ -14,6 +14,8 @@ Map<String, List<Transaction>> filterInternals(
           positiveTransaction,
           negativeTransaction
         ];
+        positiveTransaction.amount = 0;
+        negativeTransaction.amount = 0;
         i++;
       }
     });
