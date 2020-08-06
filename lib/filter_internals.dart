@@ -1,9 +1,10 @@
 import 'transaction.dart';
 
 // take to list of transactions, compare and return the internals
-List<List<Transaction>> filterInternals(List<Transaction> positiveTransactions,
+List filterInternals(List<Transaction> positiveTransactions,
     List<Transaction> negativeTransactions) {
   List<List<Transaction>> internalTransaction = [];
+  List<Transaction> nonMatch = [];
 
   positiveTransactions.forEach((positiveTransaction) {
     negativeTransactions.forEach((negativeTransaction) {
@@ -22,5 +23,16 @@ List<List<Transaction>> filterInternals(List<Transaction> positiveTransactions,
     });
   });
 
-  return internalTransaction;
+  positiveTransactions.forEach((element) {
+    if (element.isMatched == false) {
+      nonMatch.add(element);
+    }
+  });
+  negativeTransactions.forEach((element) {
+    if (element.isMatched == false) {
+      nonMatch.add(element);
+    }
+  });
+
+  return [internalTransaction, nonMatch];
 }
