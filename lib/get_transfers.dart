@@ -6,7 +6,6 @@ Future<List<List<Transaction>>> getTransfers() async {
   List<Transaction> negativeTransactions = [];
 
   List<Transaction> transactions = await getTransactions();
-  print(transactions);
 
   transactions.forEach((value) {
     if (value.category == 'transfer') {
