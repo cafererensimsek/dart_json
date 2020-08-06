@@ -14,6 +14,7 @@ class Transaction {
       this.description,
       this.isMatched});
 
+  // create a Transaction object by reading  a json object
   factory Transaction.fromJson(Map<String, dynamic> json) {
     return Transaction(
       id: json['id'] as num,
