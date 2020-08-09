@@ -4,7 +4,7 @@ import 'transaction.dart';
 List filterInternals(List<Transaction> positiveTransactions,
     List<Transaction> negativeTransactions) {
   List<List<Transaction>> internalTransaction = [];
-  List<Transaction> nonMatch = [];
+  List<Transaction> externalTransfer = [];
 
   positiveTransactions.forEach((positiveTransaction) {
     negativeTransactions.forEach((negativeTransaction) {
@@ -25,14 +25,14 @@ List filterInternals(List<Transaction> positiveTransactions,
 
   positiveTransactions.forEach((element) {
     if (element.isMatched == false) {
-      nonMatch.add(element);
+      externalTransfer.add(element);
     }
   });
   negativeTransactions.forEach((element) {
     if (element.isMatched == false) {
-      nonMatch.add(element);
+      externalTransfer.add(element);
     }
   });
 
-  return [internalTransaction, nonMatch];
+  return [internalTransaction, externalTransfer];
 }

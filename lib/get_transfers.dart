@@ -3,8 +3,8 @@ import 'transaction.dart';
 
 // gets a transaction list and returns the transfers as two seperate lists
 Future<List<List<Transaction>>> getTransfers() async {
-  List<Transaction> positiveTransactions = [];
-  List<Transaction> negativeTransactions = [];
+  List<Transaction> positiveTransfers = [];
+  List<Transaction> negativeTransfers = [];
 
   List<Transaction> transactions = await getTransactions();
 
@@ -13,11 +13,11 @@ Future<List<List<Transaction>>> getTransfers() async {
   transactions.forEach((value) {
     if (value.category == 'transfer') {
       if (value.amount < 0) {
-        negativeTransactions.add(value);
+        negativeTransfers.add(value);
       } else if (value.amount > 0) {
-        positiveTransactions.add(value);
+        positiveTransfers.add(value);
       }
     }
   });
-  return [positiveTransactions, negativeTransactions];
+  return [positiveTransfers, negativeTransfers];
 }
