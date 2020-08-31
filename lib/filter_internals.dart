@@ -9,14 +9,14 @@ List filterInternals(List<Transaction> positiveTransactions,
   positiveTransactions.forEach((positiveTransaction) {
     negativeTransactions.forEach((negativeTransaction) {
       // if the amounts and the dates are the same and they are both unmtahced, they are internals
-      if (positiveTransaction.amount == positiveTransaction.amount &&
+      if (positiveTransaction.amount == negativeTransaction.amount &&
           positiveTransaction.date == negativeTransaction.date &&
-          positiveTransaction.isMatched == false &&
-          negativeTransaction.isMatched == false) {
+          !positiveTransaction.isMatched &&
+          !negativeTransaction.isMatched) {
         // add them to the list
         internalTransaction.add([positiveTransaction, negativeTransaction]);
 
-        // they are matched chang ethe property to true
+        // they are matched change the property to true
         positiveTransaction.isMatched = true;
         negativeTransaction.isMatched = true;
       }
@@ -24,12 +24,12 @@ List filterInternals(List<Transaction> positiveTransactions,
   });
 
   positiveTransactions.forEach((element) {
-    if (element.isMatched == false) {
+    if (!element.isMatched) {
       externalTransfer.add(element);
     }
   });
   negativeTransactions.forEach((element) {
-    if (element.isMatched == false) {
+    if (!element.isMatched) {
       externalTransfer.add(element);
     }
   });
